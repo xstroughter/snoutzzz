@@ -33,6 +33,16 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
+        brand: {
+          cream: "#FAF6F0",
+          "cream-dark": "#F0E9DD",
+          sage: "#8DA576",
+          "sage-dark": "#6E8459",
+          "sage-light": "#B9CBA8",
+          terracotta: "#C97C5D",
+          "terracotta-dark": "#AD6248",
+          charcoal: "#3A3A38",
+        },
       },
       borderRadius: {
         none: "0px",
@@ -59,7 +69,7 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          "Inter",
+          "var(--font-sans)",
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",
@@ -68,6 +78,7 @@ module.exports = {
           "Ubuntu",
           "sans-serif",
         ],
+        heading: ["var(--font-heading)", "Georgia", "serif"],
       },
       keyframes: {
         ring: {
