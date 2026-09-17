@@ -9,6 +9,7 @@ import PaginatedProducts from "@modules/store/templates/paginated-products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { HttpTypes } from "@medusajs/types"
 import { OptionValueIds } from "@lib/util/product-option-filters"
+import { PriceRangeValue } from "@lib/util/price-range-filters"
 
 export default function CategoryTemplate({
   category,
@@ -16,12 +17,14 @@ export default function CategoryTemplate({
   page,
   countryCode,
   optionValueIds,
+  priceRange,
 }: {
   category: HttpTypes.StoreProductCategory
   sortBy?: SortOptions
   page?: string
   countryCode: string
   optionValueIds?: OptionValueIds
+  priceRange?: PriceRangeValue
 }) {
   const pageNumber = page ? parseInt(page) : 1
   const sort = sortBy || "created_at"
@@ -102,6 +105,7 @@ export default function CategoryTemplate({
             categoryId={category.id}
             countryCode={countryCode}
             optionValueIds={optionValueIds}
+            priceRange={priceRange}
           />
         </Suspense>
       </div>

@@ -2,6 +2,7 @@
 
 import { sdk } from "@lib/config"
 import { OptionValueIds } from "@lib/util/product-option-filters"
+import { getPriceRangeBounds, PriceRangeValue } from "@lib/util/price-range-filters"
 import { sortProducts } from "@lib/util/sort-products"
 import { HttpTypes } from "@medusajs/types"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
@@ -102,12 +103,14 @@ export const listProductsWithSort = async ({
   sortBy = "created_at",
   countryCode,
   optionValueIds,
+  priceRange,
 }: {
   page?: number
   queryParams?: ProductListQueryParams
   sortBy?: SortOptions
   countryCode: string
   optionValueIds?: OptionValueIds
+  priceRange?: PriceRangeValue
 }): Promise<{
   response: { products: HttpTypes.StoreProduct[]; count: number }
   nextPage: number | null
@@ -130,11 +133,38 @@ export const listProductsWithSort = async ({
     countryCode,
   })
 
-  const sortedProducts = sortProducts(products, sortBy)
+  const { min: minPrice, max: maxPrice } = getPriceRangeBounds(priceRange)
+
+  const priceFilteredProducts =
+    minPrice === undefined && maxPrice === undefined
+      ? products
+      : products.filter((product) => {
+          const variantPrices = (product.variants || []).map(
+            (variant) => variant?.calculated_price?.calculated_amount || 0
+          )
+
+          if (!variantPrices.length) {
+            return false
+          }
+
+          const lowestPrice = Math.min(...variantPrices)
+
+          if (minPrice !== undefined && lowestPrice < minPrice) {
+            return false
+          }
+
+          if (maxPrice !== undefined && lowestPrice >= maxPrice) {
+            return false
+          }
+
+          return true
+        })
+
+  const sortedProducts = sortProducts(priceFilteredProducts, sortBy)
 
   const pageParam = (page - 1) * limit
 
-  const filteredCount = products.length
+  const filteredCount = sortedProducts.length
 
   const nextPage = filteredCount > pageParam + limit ? pageParam + limit : null
 

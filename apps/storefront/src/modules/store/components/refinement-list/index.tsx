@@ -7,7 +7,12 @@ import {
   OPTION_VALUE_QUERY_KEY,
   parseOptionValueIds,
 } from "@lib/util/product-option-filters"
+import {
+  PRICE_RANGE_QUERY_KEY,
+  parsePriceRange,
+} from "@lib/util/price-range-filters"
 import OptionsPicker from "./options-picker"
+import PriceRangeFilter from "./price-range"
 import SortProducts, { SortOptions } from "./sort-products"
 
 type RefinementListProps = {
@@ -63,11 +68,30 @@ const RefinementList = ({
       )
     })
 
+  const priceRange = useMemo(
+    () => parsePriceRange(Object.fromEntries(searchParams.entries())),
+    [searchParams]
+  )
+
+  const setPriceRange = (value: string) =>
+    updateQueryParams((params) => {
+      if (value === "all") {
+        params.delete(PRICE_RANGE_QUERY_KEY)
+      } else {
+        params.set(PRICE_RANGE_QUERY_KEY, value)
+      }
+    })
+
   return (
     <div className="flex flex-col gap-12 py-4 mb-8 small:px-0 pl-6 small:min-w-[250px] small:ml-[1.675rem]">
       <SortProducts
         sortBy={sortBy}
         setQueryParams={setQueryParams}
+        data-testid={dataTestId}
+      />
+      <PriceRangeFilter
+        priceRange={priceRange}
+        setPriceRange={setPriceRange}
         data-testid={dataTestId}
       />
       {!hideOptionsPicker && (
