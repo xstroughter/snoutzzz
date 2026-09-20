@@ -24,6 +24,22 @@ export default async function Nav() {
             <div className="h-full">
               <SideMenu regions={regions} locales={locales} currentLocale={currentLocale} />
             </div>
+            <div className="hidden small:flex items-center gap-x-6 h-full ml-6">
+              <LocalizedClientLink
+                className="hover:text-brand-terracotta"
+                href="/categories/dog"
+                data-testid="nav-dog-link"
+              >
+                Dog
+              </LocalizedClientLink>
+              <LocalizedClientLink
+                className="hover:text-brand-terracotta"
+                href="/categories/cat"
+                data-testid="nav-cat-link"
+              >
+                Cat
+              </LocalizedClientLink>
+            </div>
           </div>
 
           <div className="flex items-center h-full">
