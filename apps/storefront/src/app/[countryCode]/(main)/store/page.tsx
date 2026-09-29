@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 
+import { getCategoryByHandle } from "@lib/data/categories"
 import { parseOptionValueIds } from "@lib/util/product-option-filters"
 import { parsePriceRange } from "@lib/util/price-range-filters"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
@@ -10,10 +11,13 @@ export const metadata: Metadata = {
   description: "Calming beds, wraps, and enrichment for anxious pets.",
 }
 
+const SPECIES_HANDLES = ["dog", "cat"]
+
 type StorePageSearchParams = Record<string, string | string[] | undefined> & {
   sortBy?: SortOptions
   page?: string
   optionValueIds?: string | string[]
+  category?: string
 }
 
 type Params = {
@@ -26,9 +30,17 @@ type Params = {
 export default async function StorePage(props: Params) {
   const params = await props.params;
   const searchParams = await props.searchParams;
-  const { sortBy, page } = searchParams
+  const { sortBy, page, category } = searchParams
   const optionValueIds = parseOptionValueIds(searchParams)
   const priceRange = parsePriceRange(searchParams)
+
+  const selectedCategory = SPECIES_HANDLES.includes(category || "")
+    ? category
+    : undefined
+
+  const productCategory = selectedCategory
+    ? await getCategoryByHandle([selectedCategory]).catch(() => undefined)
+    : undefined
 
   return (
     <StoreTemplate
@@ -37,6 +49,9 @@ export default async function StorePage(props: Params) {
       countryCode={params.countryCode}
       optionValueIds={optionValueIds}
       priceRange={priceRange}
+      selectedSpecies={selectedCategory}
+      categoryId={productCategory?.id}
+      categoryName={productCategory?.name}
     />
   )
 }
