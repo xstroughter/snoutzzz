@@ -26,7 +26,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
       data-mode="light"
       className={`${fraunces.variable} ${inter.variable}`}
     >
-      <body className="bg-brand-cream">
+      <body className="bg-brand-sage-mist">
         <main className="relative">{props.children}</main>
       </body>
     </html>

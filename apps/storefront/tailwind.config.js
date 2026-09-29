@@ -39,6 +39,7 @@ module.exports = {
           sage: "#8DA576",
           "sage-dark": "#6E8459",
           "sage-light": "#B9CBA8",
+          "sage-mist": "#A6CCA2",
           terracotta: "#C97C5D",
           "terracotta-dark": "#AD6248",
           charcoal: "#3A3A38",
