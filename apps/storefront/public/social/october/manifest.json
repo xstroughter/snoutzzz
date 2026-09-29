@@ -1,0 +1,66 @@
+[
+  {
+    "id": "01-pumpkin-latte",
+    "url": "https://www.snoutzzz.com/social/october/01-pumpkin-latte.png",
+    "description": "Noodlez sprawled in the whipped cream on top of a pumpkin spice latte, cinnamon stick, pumpkin in the background.",
+    "hashtags": ["#PSL", "#PumpkinSpiceLatte", "#FallVibes"],
+    "mention": "@starbucks",
+    "mention_note": "Classic PSL-season shot — tag only if the caption's joke genuinely calls for it."
+  },
+  {
+    "id": "02-pumpkin-stoop",
+    "url": "https://www.snoutzzz.com/social/october/02-pumpkin-stoop.png",
+    "description": "Noodlez napping curled on top of a pumpkin on a brownstone's front steps, fall leaves scattered around.",
+    "hashtags": ["#FallVibes", "#PumpkinSeason", "#AutumnCat"],
+    "mention": null,
+    "mention_note": "No brand to tag here."
+  },
+  {
+    "id": "03-fish-daydream",
+    "url": "https://www.snoutzzz.com/social/october/03-fish-daydream.png",
+    "description": "Noodlez mid-stretch on a living room table, cartoon fish floating around him like he's dreaming, plain mug nearby.",
+    "hashtags": ["#CatsOfInstagram", "#CatDreams", "#MorningStretch"],
+    "mention": null,
+    "mention_note": "No brand to tag here."
+  },
+  {
+    "id": "04-kitchen-stretch",
+    "url": "https://www.snoutzzz.com/social/october/04-kitchen-stretch.png",
+    "description": "Noodlez stretching on the kitchen counter next to a plain black mug, espresso machine in the background.",
+    "hashtags": ["#MorningRoutine", "#CoffeeTime", "#CatsOfInstagram"],
+    "mention": null,
+    "mention_note": "The espresso machine has no visible brand — don't invent one to tag."
+  },
+  {
+    "id": "05-checkout-nap",
+    "url": "https://www.snoutzzz.com/social/october/05-checkout-nap.png",
+    "description": "Noodlez asleep on a shop checkout counter while customers wait behind him.",
+    "hashtags": ["#CatNap", "#ShopCat", "#CatsOfInstagram"],
+    "mention": null,
+    "mention_note": "No real store to tag here."
+  },
+  {
+    "id": "06-strawberry-croissant",
+    "url": "https://www.snoutzzz.com/social/october/06-strawberry-croissant.png",
+    "description": "Noodlez curled asleep on top of a giant strawberry-cream croissant, strawberry pattern background.",
+    "hashtags": ["#Croissant", "#StrawberryDessert", "#Foodie"],
+    "mention": null,
+    "mention_note": "No specific bakery to tag here."
+  },
+  {
+    "id": "07-marionette-stage",
+    "url": "https://www.snoutzzz.com/social/october/07-marionette-stage.png",
+    "description": "Noodlez posed like a marionette on strings, theater stage with a red curtain and spotlight.",
+    "hashtags": ["#Pinocchio", "#PuppetShow"],
+    "mention": "@disney",
+    "mention_note": "Nod to Pinocchio — tag only if the caption's joke genuinely calls for it."
+  },
+  {
+    "id": "08-halloween-candy",
+    "url": "https://www.snoutzzz.com/social/october/08-halloween-candy.png",
+    "description": "Noodlez passed out on a pile of trick-or-treat candy wrappers on the front stoop steps.",
+    "hashtags": ["#Halloween", "#TrickOrTreat", "#CandyComa"],
+    "mention": null,
+    "mention_note": "Wrappers are generic — no specific candy brand to tag."
+  }
+]
