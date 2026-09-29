@@ -6,14 +6,14 @@ const Hero = () => {
   return (
     <div className="min-h-[75vh] w-full border-b border-brand-sage-dark/20 relative bg-brand-sage-mist overflow-hidden">
       <div className="relative z-10 flex flex-col justify-center items-center text-center px-6 py-16 small:p-32 gap-6">
-        <div className="relative w-40 h-40 small:w-56 small:h-56 rounded-full overflow-hidden shadow-lg ring-4 ring-white/60">
+        <div className="relative w-56 h-56 small:w-80 small:h-80">
           <Image
             src="/hero/noodlez-sleepy.png"
             alt="Noodlez, the Snoutzzz mascot, dozing off"
             fill
             priority
-            sizes="(max-width: 1024px) 160px, 224px"
-            className="object-cover"
+            sizes="(max-width: 1024px) 224px, 320px"
+            className="object-contain"
           />
         </div>
         <span className="flex flex-col gap-2">
