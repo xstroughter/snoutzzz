@@ -4,7 +4,7 @@ const RAIL_TOP = "4rem"
 // the 1440px container itself starts leaving real margin (large screens and
 // up). So the rail has to stay thin enough to sit inside that gutter on
 // small/medium screens, then can grow once there's genuine margin to use.
-const RAIL_WIDTH_CLASSES = "w-[12px] small:w-[18px] large:w-[24px] xlarge:w-[80px] 2xlarge:w-[110px]"
+const RAIL_WIDTH_CLASSES = "w-[16px] small:w-[22px] large:w-[28px] xlarge:w-[110px] 2xlarge:w-[150px]"
 
 const VineDecor = () => {
   return (
@@ -24,6 +24,7 @@ const VineDecor = () => {
             backgroundSize: "100% auto",
           }}
         />
+        <img src="/decor/vine-tip-left.png" alt="" className="w-full block" />
       </div>
       <div
         aria-hidden="true"
@@ -40,6 +41,7 @@ const VineDecor = () => {
             backgroundSize: "100% auto",
           }}
         />
+        <img src="/decor/vine-tip-right.png" alt="" className="w-full block" />
       </div>
     </>
   )
