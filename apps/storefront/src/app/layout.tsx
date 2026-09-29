@@ -1,4 +1,5 @@
 import { getBaseURL } from "@lib/util/env"
+import VineDecor from "@modules/layout/components/vine-decor"
 import { Metadata } from "next"
 import { Fraunces, Inter } from "next/font/google"
 import "styles/globals.css"
@@ -26,7 +27,8 @@ export default function RootLayout(props: { children: React.ReactNode }) {
       data-mode="light"
       className={`${fraunces.variable} ${inter.variable}`}
     >
-      <body className="bg-brand-sage-mist">
+      <body className="bg-brand-sage-mist relative">
+        <VineDecor />
         <main className="relative">{props.children}</main>
       </body>
     </html>
