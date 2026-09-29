@@ -6,16 +6,13 @@ const Hero = () => {
   return (
     <div className="min-h-[75vh] w-full border-b border-brand-sage-dark/20 relative bg-brand-sage-mist overflow-hidden">
       <div className="relative z-10 flex flex-col justify-center items-center text-center px-6 py-16 small:p-32 gap-6">
-        <div
-          className="relative w-40 small:w-52"
-          style={{ aspectRatio: "350 / 727" }}
-        >
+        <div className="relative w-56 h-56 small:w-80 small:h-80">
           <Image
-            src="/hero/noodlez-vine.png"
-            alt="Noodlez, the Snoutzzz mascot, tucked into a plant pot with trailing vines"
+            src="/hero/noodlez-sleepy.png"
+            alt="Noodlez, the Snoutzzz mascot, dozing off"
             fill
             priority
-            sizes="(max-width: 1024px) 160px, 208px"
+            sizes="(max-width: 1024px) 224px, 320px"
             className="object-contain"
           />
         </div>
