@@ -46,6 +46,30 @@ const POSES = [
     width: 800,
     height: 411,
   },
+  {
+    src: "/mascot/noodlez-loaf.png",
+    alt: "Noodlez the cat sleeping in a compact loaf",
+    width: 656,
+    height: 518,
+  },
+  {
+    src: "/mascot/noodlez-attentive.png",
+    alt: "Noodlez the cat sitting upright and attentive",
+    width: 538,
+    height: 712,
+  },
+  {
+    src: "/mascot/noodlez-grooming.png",
+    alt: "Noodlez the cat licking his paw while grooming",
+    width: 573,
+    height: 682,
+  },
+  {
+    src: "/mascot/noodlez-belly.png",
+    alt: "Noodlez the cat sleeping on his back, belly up",
+    width: 809,
+    height: 490,
+  },
 ]
 
 const CYCLE_INTERVAL_MS = 60_000
@@ -115,9 +139,12 @@ const NoodlezMascot = () => {
       </div>
       <div
         className={clx(
-          "relative h-[72px] small:h-[92px] shrink-0 transition-transform duration-500 ease-out",
-          visible ? "translate-y-0" : "translate-y-[140%]"
+          "relative h-[72px] small:h-[92px] shrink-0 transition-[transform,opacity] duration-700 ease-out",
+          visible
+            ? "translate-x-0 opacity-100"
+            : "translate-x-[220%] opacity-0"
         )}
+        style={{ transitionDuration: visible ? "700ms, 1100ms" : "400ms, 300ms" }}
       >
         <Image
           key={pose.src}
