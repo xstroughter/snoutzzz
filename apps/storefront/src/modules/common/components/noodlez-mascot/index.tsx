@@ -21,29 +21,59 @@ const MESSAGES = [
   "If I had thumbs, I would order myself a tiny pumpkin toy immediately.",
 ]
 
+const POSES = [
+  {
+    src: "/mascot/noodlez-wave.png",
+    alt: "Noodlez the cat waving hello",
+    width: 604,
+    height: 664,
+  },
+  {
+    src: "/mascot/noodlez-sit.png",
+    alt: "Noodlez the cat lying down looking cozy",
+    width: 800,
+    height: 431,
+  },
+  {
+    src: "/mascot/noodlez-playful.png",
+    alt: "Noodlez the cat rolling around playfully",
+    width: 809,
+    height: 490,
+  },
+  {
+    src: "/mascot/noodlez-curled.png",
+    alt: "Noodlez the cat curled up grooming himself",
+    width: 800,
+    height: 411,
+  },
+]
+
 const CYCLE_INTERVAL_MS = 60_000
 const VISIBLE_DURATION_MS = 9_000
 const INITIAL_DELAY_MS = 4_000
 
+const pickIndex = (length: number, lastRef: React.MutableRefObject<number | null>) => {
+  let next = Math.floor(Math.random() * length)
+  while (length > 1 && next === lastRef.current) {
+    next = Math.floor(Math.random() * length)
+  }
+  lastRef.current = next
+  return next
+}
+
 const NoodlezMascot = () => {
   const [visible, setVisible] = useState(false)
   const [messageIndex, setMessageIndex] = useState(0)
-  const lastIndexRef = useRef<number | null>(null)
+  const [poseIndex, setPoseIndex] = useState(0)
+  const lastMessageRef = useRef<number | null>(null)
+  const lastPoseRef = useRef<number | null>(null)
 
   useEffect(() => {
     let hideTimeout: ReturnType<typeof setTimeout>
 
-    const pickMessage = () => {
-      let next = Math.floor(Math.random() * MESSAGES.length)
-      while (MESSAGES.length > 1 && next === lastIndexRef.current) {
-        next = Math.floor(Math.random() * MESSAGES.length)
-      }
-      lastIndexRef.current = next
-      return next
-    }
-
     const appear = () => {
-      setMessageIndex(pickMessage())
+      setMessageIndex(pickIndex(MESSAGES.length, lastMessageRef))
+      setPoseIndex(pickIndex(POSES.length, lastPoseRef))
       setVisible(true)
       hideTimeout = setTimeout(() => setVisible(false), VISIBLE_DURATION_MS)
     }
@@ -57,6 +87,8 @@ const NoodlezMascot = () => {
       clearInterval(interval)
     }
   }, [])
+
+  const pose = POSES[poseIndex]
 
   return (
     <div
@@ -83,16 +115,17 @@ const NoodlezMascot = () => {
       </div>
       <div
         className={clx(
-          "relative w-[72px] h-[72px] small:w-[92px] small:h-[92px] shrink-0 transition-transform duration-500 ease-out",
+          "relative h-[72px] small:h-[92px] shrink-0 transition-transform duration-500 ease-out",
           visible ? "translate-y-0" : "translate-y-[140%]"
         )}
       >
         <Image
-          src="/mascot/noodlez-wave.png"
-          alt="Noodlez the cat waving hello"
-          fill
-          sizes="92px"
-          className="object-contain drop-shadow-md"
+          key={pose.src}
+          src={pose.src}
+          alt={pose.alt}
+          width={pose.width}
+          height={pose.height}
+          className="h-full w-auto object-contain drop-shadow-md"
         />
       </div>
     </div>
