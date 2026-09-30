@@ -25,44 +25,44 @@ const POSES = [
   {
     src: "/mascot/noodlez-wave.png",
     alt: "Noodlez the cat waving hello",
-    width: 604,
-    height: 664,
+    width: 273,
+    height: 300,
   },
   {
     src: "/mascot/noodlez-sit.png",
     alt: "Noodlez the cat lying down looking cozy",
-    width: 800,
-    height: 431,
+    width: 557,
+    height: 300,
   },
   {
     src: "/mascot/noodlez-playful.png",
     alt: "Noodlez the cat rolling around playfully",
-    width: 809,
-    height: 490,
+    width: 495,
+    height: 300,
   },
   {
     src: "/mascot/noodlez-curled.png",
     alt: "Noodlez the cat curled up grooming himself",
-    width: 800,
-    height: 411,
+    width: 584,
+    height: 300,
   },
   {
     src: "/mascot/noodlez-loaf.png",
     alt: "Noodlez the cat sleeping in a compact loaf",
-    width: 656,
-    height: 518,
+    width: 380,
+    height: 300,
   },
   {
     src: "/mascot/noodlez-attentive.png",
     alt: "Noodlez the cat sitting upright and attentive",
-    width: 538,
-    height: 712,
+    width: 227,
+    height: 300,
   },
   {
     src: "/mascot/noodlez-grooming.png",
     alt: "Noodlez the cat licking his paw while grooming",
-    width: 573,
-    height: 682,
+    width: 252,
+    height: 300,
   },
 ]
 
@@ -156,6 +156,7 @@ const NoodlezMascot = () => {
           alt={pose.alt}
           width={pose.width}
           height={pose.height}
+          priority
           className="h-full w-auto object-contain drop-shadow-md"
         />
       </div>
