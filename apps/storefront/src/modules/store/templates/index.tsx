@@ -44,7 +44,7 @@ const StoreTemplate = ({
             className="font-heading text-3xl text-brand-charcoal"
             data-testid="store-page-title"
           >
-            {categoryName ? `${categoryName} products` : "All products"}
+            {categoryName || "All products"}
           </h1>
         </div>
         <Suspense fallback={<SkeletonProductGrid />}>

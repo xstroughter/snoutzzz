@@ -8,8 +8,9 @@ type SpeciesSwitcherProps = {
 
 const OPTIONS = [
   { handle: undefined, label: "All" },
-  { handle: "dog", label: "Dog" },
-  { handle: "cat", label: "Cat" },
+  { handle: "dog", label: "Dogs" },
+  { handle: "cat", label: "Cats" },
+  { handle: "humans", label: "Humans" },
 ]
 
 const SpeciesSwitcher = ({ selected }: SpeciesSwitcherProps) => {

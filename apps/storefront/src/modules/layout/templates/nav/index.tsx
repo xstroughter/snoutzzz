@@ -30,14 +30,21 @@ export default async function Nav() {
                 href="/categories/dog"
                 data-testid="nav-dog-link"
               >
-                Dog
+                Dogs
               </LocalizedClientLink>
               <LocalizedClientLink
                 className="hover:text-brand-terracotta"
                 href="/categories/cat"
                 data-testid="nav-cat-link"
               >
-                Cat
+                Cats
+              </LocalizedClientLink>
+              <LocalizedClientLink
+                className="hover:text-brand-terracotta"
+                href="/categories/charms-&-keepsakes"
+                data-testid="nav-humans-link"
+              >
+                Humans
               </LocalizedClientLink>
             </div>
           </div>

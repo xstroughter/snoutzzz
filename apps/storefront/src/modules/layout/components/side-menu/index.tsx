@@ -14,13 +14,13 @@ import { Locale } from "@lib/data/locales"
 
 const SideMenuItems = {
   Home: "/",
-  Dog: "/categories/dog",
-  Cat: "/categories/cat",
+  Dogs: "/categories/dog",
+  Cats: "/categories/cat",
+  Humans: "/categories/charms-&-keepsakes",
   "Calming Beds": "/categories/calming-beds",
   "Calming Wearables": "/categories/calming-wearables",
   "Enrichment & Toys": "/categories/enrichment-toys",
   "Calm Home & Travel": "/categories/calm-home-travel",
-  "Charms & Keepsakes": "/categories/charms-&-keepsakes",
   "All Products": "/store",
   Account: "/account",
   Cart: "/cart",

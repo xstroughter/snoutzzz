@@ -11,7 +11,13 @@ export const metadata: Metadata = {
   description: "Calming beds, wraps, and enrichment for anxious pets.",
 }
 
-const SPECIES_HANDLES = ["dog", "cat"]
+// The URL's `category` value uses simple handles; "humans" maps to the
+// category's real (and URL-unfriendly) handle behind the scenes.
+const SPECIES_CATEGORY_HANDLES: Record<string, string> = {
+  dog: "dog",
+  cat: "cat",
+  humans: "charms-&-keepsakes",
+}
 
 type StorePageSearchParams = Record<string, string | string[] | undefined> & {
   sortBy?: SortOptions
@@ -34,12 +40,13 @@ export default async function StorePage(props: Params) {
   const optionValueIds = parseOptionValueIds(searchParams)
   const priceRange = parsePriceRange(searchParams)
 
-  const selectedCategory = SPECIES_HANDLES.includes(category || "")
-    ? category
-    : undefined
+  const selectedCategory =
+    category && category in SPECIES_CATEGORY_HANDLES ? category : undefined
 
   const productCategory = selectedCategory
-    ? await getCategoryByHandle([selectedCategory]).catch(() => undefined)
+    ? await getCategoryByHandle([
+        SPECIES_CATEGORY_HANDLES[selectedCategory],
+      ]).catch(() => undefined)
     : undefined
 
   return (
