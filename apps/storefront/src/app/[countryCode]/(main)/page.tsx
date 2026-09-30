@@ -2,6 +2,7 @@ import { Metadata } from "next"
 
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
+import HumanFavorites from "@modules/home/components/human-favorites"
 import PopularProducts from "@modules/home/components/popular-products"
 import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
@@ -38,6 +39,7 @@ export default async function Home(props: {
         </ul>
       </div>
       <PopularProducts region={region} />
+      <HumanFavorites region={region} />
     </>
   )
 }

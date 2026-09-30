@@ -46,5 +46,9 @@ export function sortProducts(
     })
   }
 
+  // "popularity" has no real sales-ranking signal to sort by yet, so it
+  // intentionally leaves the store API's own default order untouched —
+  // the same order the homepage's Popular section uses.
+
   return sortedProducts
 }

@@ -39,6 +39,10 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
         />
       )}
       {props.children}
+      <div
+        aria-hidden="true"
+        className="w-full h-32 bg-gradient-to-b from-brand-sage-mist to-brand-cream"
+      />
       <Footer />
     </>
   )

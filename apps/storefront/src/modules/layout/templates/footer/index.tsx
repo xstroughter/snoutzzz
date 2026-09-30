@@ -3,6 +3,21 @@ import { listCollections } from "@lib/data/collections";
 import { Text, clx } from "@modules/common/components/ui";
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link";
+import Instagram from "@modules/common/icons/instagram";
+import Threads from "@modules/common/icons/threads";
+
+const SOCIAL_LINKS = [
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/snoutzzz/",
+    Icon: Instagram,
+  },
+  {
+    name: "Threads",
+    href: "https://www.threads.net/@snoutzzz",
+    Icon: Threads,
+  },
+]
 
 export default async function Footer() {
   const { collections } = await listCollections({
@@ -135,10 +150,24 @@ export default async function Footer() {
             </div>
           </div>
         </div>
-        <div className="flex w-full mb-16 justify-between text-brand-charcoal/50">
+        <div className="flex w-full mb-16 justify-between items-center text-brand-charcoal/50">
           <Text className="txt-compact-small">
             © {new Date().getFullYear()} Snoutzzz. All rights reserved.
           </Text>
+          <div className="flex items-center gap-x-4">
+            {SOCIAL_LINKS.map(({ name, href, Icon }) => (
+              <a
+                key={name}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={name}
+                className="hover:text-brand-terracotta transition-colors"
+              >
+                <Icon size={18} />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
