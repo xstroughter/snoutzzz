@@ -118,7 +118,7 @@ const NoodlezMascot = () => {
 
   return (
     <div
-      className="fixed bottom-4 right-4 small:bottom-6 small:right-6 z-40 flex items-end gap-2 pointer-events-none"
+      className="fixed bottom-4 right-4 small:bottom-6 small:right-6 z-40 flex flex-col items-end gap-2 pointer-events-none"
       aria-live="polite"
     >
       <div
