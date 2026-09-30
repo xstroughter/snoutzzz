@@ -69,6 +69,7 @@ const POSES = [
 const CYCLE_INTERVAL_MS = 60_000
 const VISIBLE_DURATION_MS = 9_000
 const INITIAL_DELAY_MS = 4_000
+const BUBBLE_DELAY_MS = 850
 
 const pickIndex = (length: number, lastRef: React.MutableRefObject<number | null>) => {
   let next = Math.floor(Math.random() * length)
@@ -81,6 +82,7 @@ const pickIndex = (length: number, lastRef: React.MutableRefObject<number | null
 
 const NoodlezMascot = () => {
   const [visible, setVisible] = useState(false)
+  const [bubbleVisible, setBubbleVisible] = useState(false)
   const [messageIndex, setMessageIndex] = useState(0)
   const [poseIndex, setPoseIndex] = useState(0)
   const lastMessageRef = useRef<number | null>(null)
@@ -88,12 +90,17 @@ const NoodlezMascot = () => {
 
   useEffect(() => {
     let hideTimeout: ReturnType<typeof setTimeout>
+    let bubbleTimeout: ReturnType<typeof setTimeout>
 
     const appear = () => {
       setMessageIndex(pickIndex(MESSAGES.length, lastMessageRef))
       setPoseIndex(pickIndex(POSES.length, lastPoseRef))
       setVisible(true)
-      hideTimeout = setTimeout(() => setVisible(false), VISIBLE_DURATION_MS)
+      bubbleTimeout = setTimeout(() => setBubbleVisible(true), BUBBLE_DELAY_MS)
+      hideTimeout = setTimeout(() => {
+        setVisible(false)
+        setBubbleVisible(false)
+      }, VISIBLE_DURATION_MS)
     }
 
     const initialTimeout = setTimeout(appear, INITIAL_DELAY_MS)
@@ -102,6 +109,7 @@ const NoodlezMascot = () => {
     return () => {
       clearTimeout(initialTimeout)
       clearTimeout(hideTimeout)
+      clearTimeout(bubbleTimeout)
       clearInterval(interval)
     }
   }, [])
@@ -116,14 +124,17 @@ const NoodlezMascot = () => {
       <div
         className={clx(
           "relative max-w-[180px] small:max-w-[220px] rounded-2xl rounded-br-sm bg-white text-brand-charcoal text-xs small:text-sm leading-snug px-3.5 py-2.5 shadow-lg border border-brand-charcoal/10 transition-all duration-500 ease-out pointer-events-auto",
-          visible
+          bubbleVisible
             ? "opacity-100 translate-y-0 scale-100"
             : "opacity-0 translate-y-3 scale-95 pointer-events-none"
         )}
       >
         <button
           type="button"
-          onClick={() => setVisible(false)}
+          onClick={() => {
+            setVisible(false)
+            setBubbleVisible(false)
+          }}
           aria-label="Dismiss Noodlez's message"
           className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-brand-charcoal/80 text-white text-[11px] leading-none flex items-center justify-center hover:bg-brand-charcoal"
         >
