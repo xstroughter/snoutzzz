@@ -6,7 +6,7 @@ import ProductPreview from "@modules/products/components/product-preview"
 import { Pagination } from "@modules/store/components/pagination"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 
-const PRODUCT_LIMIT = 12
+const PRODUCT_LIMIT = 20
 
 type PaginatedProductsParams = {
   limit: number
@@ -36,7 +36,7 @@ export default async function PaginatedProducts({
   priceRange?: PriceRangeValue
 }) {
   const queryParams: PaginatedProductsParams = {
-    limit: 12,
+    limit: PRODUCT_LIMIT,
   }
 
   if (collectionId) {
