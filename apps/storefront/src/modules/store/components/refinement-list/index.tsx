@@ -84,16 +84,18 @@ const RefinementList = ({
 
   return (
     <div className="flex flex-col gap-12 py-4 mb-8 small:px-0 pl-6 small:min-w-[250px] small:ml-[1.675rem]">
-      <SortProducts
-        sortBy={sortBy}
-        setQueryParams={setQueryParams}
-        data-testid={dataTestId}
-      />
-      <PriceRangeFilter
-        priceRange={priceRange}
-        setPriceRange={setPriceRange}
-        data-testid={dataTestId}
-      />
+      <div className="flex flex-row gap-x-12 small:flex-col small:gap-x-0 small:gap-y-12">
+        <SortProducts
+          sortBy={sortBy}
+          setQueryParams={setQueryParams}
+          data-testid={dataTestId}
+        />
+        <PriceRangeFilter
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+          data-testid={dataTestId}
+        />
+      </div>
       {!hideOptionsPicker && (
         <OptionsPicker
           selectedValueIds={selectedOptionValueIds}
