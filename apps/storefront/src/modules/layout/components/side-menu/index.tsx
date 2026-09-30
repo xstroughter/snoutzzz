@@ -16,7 +16,12 @@ const SideMenuItems = {
   Home: "/",
   Dog: "/categories/dog",
   Cat: "/categories/cat",
-  Store: "/store",
+  "Calming Beds": "/categories/calming-beds",
+  "Calming Wearables": "/categories/calming-wearables",
+  "Enrichment & Toys": "/categories/enrichment-toys",
+  "Calm Home & Travel": "/categories/calm-home-travel",
+  "Charms & Keepsakes": "/categories/charms-&-keepsakes",
+  "All Products": "/store",
   Account: "/account",
   Cart: "/cart",
 }
@@ -57,12 +62,12 @@ const SideMenu = ({ regions, locales, currentLocale }: SideMenuProps) => {
               <Transition
                 show={open}
                 as={Fragment}
-                enter="transition ease-out duration-150"
-                enterFrom="opacity-0"
-                enterTo="opacity-100 backdrop-blur-2xl"
-                leave="transition ease-in duration-150"
-                leaveFrom="opacity-100 backdrop-blur-2xl"
-                leaveTo="opacity-0"
+                enter="transition ease-out duration-200"
+                enterFrom="opacity-0 -translate-x-full"
+                enterTo="opacity-100 translate-x-0 backdrop-blur-2xl"
+                leave="transition ease-in duration-200"
+                leaveFrom="opacity-100 translate-x-0 backdrop-blur-2xl"
+                leaveTo="opacity-0 -translate-x-full"
               >
                 <PopoverPanel className="flex flex-col absolute w-full pr-4 sm:pr-0 sm:w-1/3 2xl:w-1/4 sm:min-w-min h-[calc(100vh-1rem)] z-[51] inset-x-0 text-sm text-ui-fg-on-color m-2 backdrop-blur-2xl">
                   <div
@@ -74,15 +79,15 @@ const SideMenu = ({ regions, locales, currentLocale }: SideMenuProps) => {
                         <XMark />
                       </button>
                     </div>
-                    <ul className="flex flex-col gap-6 items-start justify-start">
+                    <ul className="flex flex-col gap-4 items-start justify-start overflow-y-auto min-h-0">
                       {Object.entries(SideMenuItems).map(([name, href]) => {
                         return (
                           <li key={name}>
                             <LocalizedClientLink
                               href={href}
-                              className="text-3xl leading-10 hover:text-ui-fg-disabled"
+                              className="text-2xl leading-8 hover:text-ui-fg-disabled"
                               onClick={close}
-                              data-testid={`${name.toLowerCase()}-link`}
+                              data-testid={`${name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-link`}
                             >
                               {name}
                             </LocalizedClientLink>
